@@ -3,57 +3,19 @@
   "version": "4.8.0",
   "description": "A polyfill combinator",
   "main": "lib/index.js",
-  "contributors": [
-    {
-      "name": "Jonathan Neal",
-      "email": "jonathantneal+github@gmail.com",
-      "url": "http://jonathantneal.com/"
-    },
-    {
-      "name": "FT Origami",
-      "email": "origami.support@ft.com",
-      "url": "https://origami.ft.com"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/financial-times/polyfill-library.git"
-  },
-  "bugs": {
-    "url": "https://github.com/financial-times/polyfill-library/issues"
-  },
+  "contributors": [],
   "scripts": {
-    "lint": "eslint polyfills lib tasks test",
-    "lint-config": "node tasks/lint-config/index.js",
     "clean": "rimraf ./polyfills/__dist && node tasks/clean",
     "build": "npm run clean && node tasks/updatesources && node tasks/buildsources/buildsources",
     "watch": "npm run clean && node tasks/updatesources && node tasks/buildsources/watchsource",
     "fmt": "eslint . --fix",
-    "test-library": "npm run build && npm run test-node && npm run test-node-unit && npm run test-end-to-end",
-    "test-polyfills": "karma start",
-    "test-all-polyfills": "node ./test/polyfills/test-all-features.js",
-    "test-end-to-end": "mocha test/end-to-end/**/*.test.js",
-    "test-node": "nyc mocha test/node/**/*.js",
-    "test-node-unit": "mocha test/unit --recursive",
-    "test": "npm run build && npm run test-node && npm run test-node-unit && npm run test-polyfills",
-    "prepublishOnly": "npm run build && mv polyfills/__dist __dist && rimraf polyfills && mkdir polyfills && mv __dist polyfills/__dist",
-    "create-new-polyfill": "node ./tasks/create-new-polyfill.js",
-    "update-browserstack-list": "node ./tasks/updatebrowserstacklist.js",
-    "version": "auto-changelog -p"
+    "create-new-polyfill": "node ./tasks/create-new-polyfill.js"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=12"
+    "node": ">=18",
+    "pnpm": ">=9"
   },
-  "files": [
-    "/CHANGELOG.md",
-    "/LICENSE.md",
-    "/README.md",
-    "/SECURITY.md",
-    "/lib",
-    "/origami.json",
-    "/polyfills/__dist"
-  ],
   "dependencies": {
     "@financial-times/polyfill-useragent-normaliser": "^2.0.1",
     "from2-string": "^1.1.0",
